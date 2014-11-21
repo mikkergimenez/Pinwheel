@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "test": "cake test"
+  },
+  "devDependencies": {
+    "chai-as-promised": "~4.1.1",
+    "chai": "~1.10.0",
+    "mocha": "~2.0.1",
+    "wd": "~0.3.11",
+    "sinon-chai": "~2.6.0",
+    "sinon": "~1.11.1"
+  }
+}

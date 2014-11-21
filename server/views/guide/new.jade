@@ -1,0 +1,9 @@
+h1= title
+form( method="post" class="pure-form")
+    div
+        div
+            input(type="text", name="title", id="editGuideTitle" placeholder="Title")
+        div
+            textarea( name="body", rows=20, id="editGuideBody" placeholder="Description")
+        div#editGuideSubmit
+            input.pure-button.pure-button-primary(type="submit", value="Add")

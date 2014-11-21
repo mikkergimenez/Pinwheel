@@ -1,0 +1,27 @@
+h1= title
+button.btn Edit Guide
+div.pure-g
+
+div.tree-nav.pure-u-1-2
+    h2
+        "Tree"
+
+div.summary.pure-u-1-2
+    div.created_at= node.created_at
+    div.summary= node.body
+
+    - each decision in node.decisions
+        div.decision
+            a.btn(title=decision.summary)= decision.title
+
+    div
+        form( method="post", action="/blog/addDecision")
+            input( type="hidden", name="_id", value=node.id.)
+            div
+                span Title :
+                input( type="text", name="person", id="addDecisionTitle")
+            div
+                span Decision :
+                textarea( name="decision", rows=5, id="addDecisionSummary")
+            div#editArticleSubmit
+                input.pure-button(type="submit", value="Send")

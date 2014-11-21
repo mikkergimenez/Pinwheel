@@ -1,0 +1,52 @@
+script(type='text/javascript') var local_data = {}
+script(type='text/javascript') var local_data_guide =!{JSON.stringify(guide)}
+script(type='text/javascript') var local_data_category =!{JSON.stringify(category)}
+
+nav.header-nav
+    div.pure-u-1-2
+        a.site-link(href="/")
+            h1= title
+    nav.right-nav.pure-u-1-2
+        nav.search-nav
+            div.search
+                form.ng-pristine.ng-valid(accept-charset="UTF-8" action="/search" method="get")
+                    div()
+                        input(name="utf8" type="hidden" value="✓")
+                        input(id="q" name="q" placeholder="Search" type="search")
+        nav.page-nav.large-nav
+            ul
+                li
+                    a(href="/guides")= "All Guides"
+nav.page-controls
+    div.page-control.page-actions
+        a(href="/guide/edit/"+guide._id)
+            i.fa.fa-pencil
+            | Edit Guide
+            span.translation_missing(title="translation missing: en.site.pages.show.history")
+        a(href="/category/"+category._id)
+            i.fa.fa-pencil
+            | Back to category.title              
+        //
+            a(href="/pages/359/versions") 
+                i.fa.fa-history
+                | History
+                span.translation_missing(title="translation missing: en.site.pages.show.history")
+            a(href="/pages/Home/edit")
+                i.fa.fa-pencil
+                | Edit
+            a(data-confirm="Delete this page?" data-method="delete" href="/pages/Home" rel="nofollow")
+                i.fa.fa-trash-o
+                | Delete
+            div.page-control.page-meta
+                | Last Updated Nov 01, 2014 at 12:23PM
+            span.pull-right
+                a(href="/").btn.btn-default= "Home"
+                a(href="/category/new").btn.btn-default= "Add Category"
+
+div.tree-nav.pure-u-1-2
+    h2 Navigation:
+    div#paper.paper
+div.summary.pure-u-1-2
+    div.created_at= guide.created_at
+    h2 Summary:
+    div.summary= guide.body

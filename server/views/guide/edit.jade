@@ -1,0 +1,39 @@
+menubar
+    span.pull-right
+        a(href="/").btn.btn-default= "Home"
+        a(href="/category/"+category._id).btn.btn-default= "Back to "+category.title
+        a(href="/guide/edit/"+guide._id).btn.btn-default= "Edit Guide"
+
+    div.container!= body
+
+h1= title
+div.pure-g
+
+h1= title
+div.tree-nav.pure-u-1-2
+    - if (typeof(node) !== 'undefined')
+        - each node in nodes
+            div
+                textarea( name="body", rows=20, id="editGuideBody" placeholder="Linked Nodes")= node.title
+    h2 Add Choice:
+    form.pure-form( method="post", action="/guide/#{guide._id}/node/new")
+        div
+            input.full-width(type="text", name="title", id="editChoicePointTitle" placeholder="Title" value=guide.title)
+        div
+            input.full-width(type="text", name="website", id="editChoicePointWebsite" placeholder="Choice Point Website") 
+        div
+            textarea.full-width( name="body", rows=20, id="editChoicePointBody" placeholder="Choice Point  Summary")
+        div
+            input.pure-button.pure-button-primary(type="submit", value="Add Choice")
+div.summary.pure-u-1-2
+    h2 Edit Guide
+    p
+        |Here is where you can edit the description and title of your guide.
+
+    form.pure-form( method="post")
+        div
+            input.full-width(type="text", name="title", id="editGuideTitle" placeholder="Title" value=guide.title) 
+        div
+            textarea.full-width( name="body", rows=20, id="editGuideBody" placeholder="Summary")= guide.body
+        div#editGuideSubmit
+            input.pure-button.pure-button-primary(type="submit", value="Submit Changes")
